@@ -27,3 +27,15 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext{
+    // dependency versions
+    room_version = '2.2.5'
+    rxjava_version = '2.2.18'
+    rxandroid_version = '2.1.1'
+    retrofit2_version = '2.9.0'
+    jakewharton_version = '1.0.0'
+    dagger2_version = '2.16'
+    lifecycle_version = "2.2.0"
+    arch_version = "2.1.0"
+}
