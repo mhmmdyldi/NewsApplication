@@ -1,6 +1,7 @@
 package com.mhmmd.snappnews.utils;
 
 import com.mhmmd.snappnews.data.AppRepository;
+import com.mhmmd.snappnews.ui.newsArticles.NewsArticleViewModel;
 import com.mhmmd.snappnews.ui.newsSource.NewsSourceViewModel;
 import com.mhmmd.snappnews.utils.rx.SchedulerProvider;
 
@@ -26,8 +27,10 @@ public class ViewModelPorviderFactory extends ViewModelProvider.NewInstanceFacto
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        if (modelClass.isAssignableFrom(NewsSourceViewModel.class)){
+        if (modelClass.isAssignableFrom(NewsSourceViewModel.class)) {
             return (T) new NewsSourceViewModel(appRepository, schedulerProvider);
+        } else if (modelClass.isAssignableFrom(NewsArticleViewModel.class)) {
+            return (T) new NewsArticleViewModel(appRepository, schedulerProvider);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
