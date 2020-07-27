@@ -22,9 +22,13 @@ public interface HeadlineDao {
     @Query("SELECT * FROM headlines_table")
     Single<List<HeadlineEntity>> loadAll();
 
-    @Delete
-    Completable delete(HeadlineEntity headline);
+    @Query("DELETE FROM headlines_table WHERE headlines_table.id == :sourceId")
+    Completable delete(String sourceId);
 
     @Query("DELETE FROM headlines_table")
     Completable deleteAll();
+
+    @Query("SELECT * FROM headlines_table WHERE headlines_table.id == :sourceId")
+    Single<List<HeadlineEntity>> loadArticlesOf(String sourceId);
+
 }

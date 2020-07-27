@@ -12,11 +12,15 @@ public interface DbHelper {
 
     Completable saveSourceListInDb(List<SourceEntity> sourceList);
 
-    Single<List<SourceEntity>> getAllSourceFromDb();
+    Single<List<SourceEntity>> getAllSourcesFromDb();
 
-    Completable InsertSourceInDb(SourceEntity source);
+    Completable insertSourceInDb(SourceEntity source);
 
     Completable saveHeadlineListInDb(List<HeadlineEntity> headlineList);
 
-    Completable InsertHeadlineInDb(HeadlineEntity headline);
+    Completable insertHeadlineInDb(HeadlineEntity headline);
+
+    Single<List<HeadlineEntity>> getArticlesOfSourceFromDb(String sourceId);
+
+    Completable deleteArticlesOfSourceFromDB(String sourceId);
 }

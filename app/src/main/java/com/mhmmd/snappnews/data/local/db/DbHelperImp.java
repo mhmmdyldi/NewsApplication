@@ -27,12 +27,12 @@ public class DbHelperImp implements DbHelper {
     }
 
     @Override
-    public Single<List<SourceEntity>> getAllSourceFromDb() {
+    public Single<List<SourceEntity>> getAllSourcesFromDb() {
         return mAppDatabase.sourceDao().loadAll();
     }
 
     @Override
-    public Completable InsertSourceInDb(SourceEntity source) {
+    public Completable insertSourceInDb(SourceEntity source) {
         return mAppDatabase.sourceDao().insert(source);
     }
 
@@ -42,7 +42,18 @@ public class DbHelperImp implements DbHelper {
     }
 
     @Override
-    public Completable InsertHeadlineInDb(HeadlineEntity headline) {
+    public Completable insertHeadlineInDb(HeadlineEntity headline) {
         return mAppDatabase.headlineDao().insert(headline);
     }
+
+    @Override
+    public Single<List<HeadlineEntity>> getArticlesOfSourceFromDb(String sourceId) {
+        return mAppDatabase.headlineDao().loadArticlesOf(sourceId);
+    }
+
+    @Override
+    public Completable deleteArticlesOfSourceFromDB(String sourceId) {
+        return mAppDatabase.headlineDao().delete(sourceId);
+    }
+
 }
