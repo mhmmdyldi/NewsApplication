@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 
 public interface NewsApiService {
 
-    @GET("source/sources?apiKey=3646f6f9b8554c0faba1c27089980a0f")
+    @GET("sources?apiKey=3646f6f9b8554c0faba1c27089980a0f")
     Observable<SourceResponse> getSourcesApiCall();
 
     @GET("top-headlines?/")
