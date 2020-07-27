@@ -38,4 +38,6 @@ ext{
     dagger2_version = '2.16'
     lifecycle_version = "2.2.0"
     arch_version = "2.1.0"
+    recylcler_view = '1.1.0'
+    glide_version = '4.10.0'
 }
