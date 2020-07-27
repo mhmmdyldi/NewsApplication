@@ -14,6 +14,7 @@ import com.mhmmd.snappnews.data.remote.ApiHelperImp;
 import com.mhmmd.snappnews.data.remote.NewsApiService;
 import com.mhmmd.snappnews.di.DatabaseInfo;
 import com.mhmmd.snappnews.utils.AppConstants;
+import com.mhmmd.snappnews.utils.NetworkUtils;
 import com.mhmmd.snappnews.utils.rx.AppSchedulerProvider;
 import com.mhmmd.snappnews.utils.rx.SchedulerProvider;
 
