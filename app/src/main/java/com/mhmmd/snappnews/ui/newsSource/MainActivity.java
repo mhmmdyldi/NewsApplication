@@ -61,8 +61,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onChanged(Resource<List<SourceEntity>> resource) {
                         Log.d("SnappNews", "onChanged: ");
-                        newsSourceAdapter.addItems(resource.getData());
-                        recyclerView.setAdapter(newsSourceAdapter);
+                        switch (resource.getStatus()){
+                            case SUCCESS:
+                                newsSourceAdapter.addItems(resource.getData());
+                                recyclerView.setAdapter(newsSourceAdapter);
+                                break;
+                            case ERROR:
+                                break;
+                            case LOADING:
+
+                        }
                     }
                 });
     }

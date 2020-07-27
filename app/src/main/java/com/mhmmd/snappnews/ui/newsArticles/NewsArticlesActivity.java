@@ -70,8 +70,16 @@ public class NewsArticlesActivity extends AppCompatActivity {
                 .observe(this, new Observer<Resource<List<HeadlineEntity>>>() {
                     @Override
                     public void onChanged(Resource<List<HeadlineEntity>> resource) {
-                        newsArticleAdapter.addItems(resource.getData());
-                        recyclerView.setAdapter(newsArticleAdapter);
+                        switch (resource.getStatus()){
+                            case SUCCESS:
+                                newsArticleAdapter.addItems(resource.getData());
+                                recyclerView.setAdapter(newsArticleAdapter);
+                                break;
+                            case ERROR:
+                                break;
+                            case LOADING:
+
+                        }
                     }
                 });
     }
