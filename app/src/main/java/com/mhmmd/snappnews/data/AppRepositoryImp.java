@@ -33,13 +33,13 @@ public class AppRepositoryImp implements AppRepository{
     }
 
     @Override
-    public Single<List<SourceEntity>> getAllSourceFromDb() {
-        return mDbHelper.getAllSourceFromDb();
+    public Single<List<SourceEntity>> getAllSourcesFromDb() {
+        return mDbHelper.getAllSourcesFromDb();
     }
 
     @Override
-    public Completable InsertSourceInDb(SourceEntity source) {
-        return mDbHelper.InsertSourceInDb(source);
+    public Completable insertSourceInDb(SourceEntity source) {
+        return mDbHelper.insertSourceInDb(source);
     }
 
     @Override
@@ -48,8 +48,18 @@ public class AppRepositoryImp implements AppRepository{
     }
 
     @Override
-    public Completable InsertHeadlineInDb(HeadlineEntity headline) {
-        return mDbHelper.InsertHeadlineInDb(headline);
+    public Completable insertHeadlineInDb(HeadlineEntity headline) {
+        return mDbHelper.insertHeadlineInDb(headline);
+    }
+
+    @Override
+    public Single<List<HeadlineEntity>> getArticlesOfSourceFromDb(String sourceId) {
+        return mDbHelper.getArticlesOfSourceFromDb(sourceId);
+    }
+
+    @Override
+    public Completable deleteArticlesOfSourceFromDB(String sourceId) {
+        return mDbHelper.deleteArticlesOfSourceFromDB(sourceId);
     }
 
     @Override
@@ -60,5 +70,17 @@ public class AppRepositoryImp implements AppRepository{
     @Override
     public Observable<HeadLineReponse> getHeadlinesApiCall(String newsSource) {
         return mApiHelper.getHeadlinesApiCall(newsSource);
+    }
+
+    @Override
+    public Observable<List<SourceEntity>> getSourcesListApiCall() {
+        return mApiHelper.getSourcesApiCall()
+                .map(sourceResponse -> sourceResponse.sources);
+    }
+
+    @Override
+    public Observable<List<HeadlineEntity>> getArticlesListApiCall(String newsSource) {
+        return mApiHelper.getHeadlinesApiCall(newsSource)
+                .map(headLineReponse -> headLineReponse.articles);
     }
 }
