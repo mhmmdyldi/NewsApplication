@@ -81,5 +81,9 @@ public class AppModule {
         return appRepositoryImp;
     }
 
-
+    @Provides
+    @Singleton
+    NetworkUtils provideNetworkUtils(Context context) {
+        return new NetworkUtils(context);
+    }
 }
